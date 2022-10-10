@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { TbClipboardText } from "react-icons/tb";
 import { Tarefa as ITarefa } from "../App";
 import { Task } from "./Task";
 import styles from "./Tasks.module.css";
@@ -6,9 +7,10 @@ import styles from "./Tasks.module.css";
 interface Props {
   tarefas: ITarefa[];
   deletarTarefa: (idTarefa: string) => void;
+  tarefaConcluida: (idTarefa: string) => void;
 }
 
-export function Tasks({ tarefas, deletarTarefa }: Props) {
+export function Tasks({ tarefas, deletarTarefa, tarefaConcluida }: Props) {
   const quantidadeTarefas = tarefas.length;
   const tarefasConcluidas = tarefas.filter((tarefa) => tarefa.status).length;
 
@@ -30,14 +32,22 @@ export function Tasks({ tarefas, deletarTarefa }: Props) {
 
       <div className={styles.list}>
         {tarefas.map((tarefa) => (
-          <Task key={tarefa.id} tarefa={tarefa} deletarTarefa={deletarTarefa} />
+          <Task
+            key={tarefa.id}
+            tarefa={tarefa}
+            deletarTarefa={deletarTarefa}
+            tarefaConcluida={tarefaConcluida}
+          />
         ))}
-        {/* <section className={styles.empty}>
-          <div>
-            <p>Você ainda não tem tarefas cadastradas</p>
-            <span>Crie tarefas e organize seus itens a fazer</span>
-          </div>
-        </section> */}
+        {tarefas.length <= 0 && (
+          <section className={styles.empty}>
+            <TbClipboardText size={50} />
+            <div>
+              <p>Você ainda não tem tarefas cadastradas</p>
+              <span>Crie tarefas e organize seus itens a fazer</span>
+            </div>
+          </section>
+        )}
       </div>
     </section>
   );

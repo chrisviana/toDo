@@ -27,10 +27,29 @@ function App() {
     setTarefa(novaTarefa);
   }
 
+  function marcarTarefaConcluida(id: string) {
+    const novaTarefa = tarefas.map((tarefa) => {
+      if (tarefa.id == id) {
+        return {
+          ...tarefa,
+          status: !tarefa.status,
+        };
+      }
+
+      return tarefa;
+    });
+
+    setTarefa(novaTarefa);
+  }
+
   return (
     <>
       <Header adicionarTarefa={adicionarTarefa} />
-      <Tasks tarefas={tarefas} deletarTarefa={deletarTarefa} />
+      <Tasks
+        tarefas={tarefas}
+        deletarTarefa={deletarTarefa}
+        tarefaConcluida={marcarTarefaConcluida}
+      />
     </>
   );
 }
