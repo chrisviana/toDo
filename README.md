@@ -9,4 +9,4 @@ A aplicação tem por principal objetivo:
 3. É possível marcar uma tarefa como concluida e o contato "Concluidas" é acionado.
 4. É possível excluír uma tarefa.
 
-![Gif do Funcionamento da Aplicação](public/screen-capture.gif)
+![Gif do Funcionamento da Aplicação](public/todo-list.gif)
