@@ -1,6 +1,3 @@
-# toDo App 
+# toDo App
 
-[![Watch the video](https://imgur.com/Uz1ugUg)](https://imgur.com/vyb4NIj)
-
-
-
+[![Watch the video]](public/screen-capture.mp4)
