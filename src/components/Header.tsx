@@ -4,33 +4,31 @@ import styles from "./Header.module.css";
 import { ChangeEvent, FormEvent, useState } from "react";
 
 interface Props {
-  onAddTask: (taskTitle: string) => void;
+  adicionarTarefa: (title: string) => void;
 }
 
-export function Header({ onAddTask }: Props) {
+export function Header({ adicionarTarefa }: Props) {
   const [title, setTitle] = useState("");
 
-  function handleSubmit(event: FormEvent) {
+  function handleAdicionarTarefa(event: FormEvent) {
     event.preventDefault();
-
-    onAddTask(title);
+    adicionarTarefa(title);
     setTitle("");
   }
 
-  function onChangeTitle(event: ChangeEvent<HTMLInputElement>) {
+  function handleChangeTitle(event: ChangeEvent<HTMLInputElement>) {
     setTitle(event.target.value);
   }
-
   return (
     <header className={styles.header}>
       <img src={todoLogo} />
 
-      <form onSubmit={handleSubmit} className={styles.newTaskForm}>
+      <form className={styles.newTaskForm} onSubmit={handleAdicionarTarefa}>
         <input
           placeholder="Adicione uma nova tarefa"
           type="text"
+          onChange={handleChangeTitle}
           value={title}
-          onChange={onChangeTitle}
         />
         <button>
           Criar
